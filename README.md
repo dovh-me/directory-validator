@@ -31,45 +31,45 @@ The tool will evaluate the rules provided by the configuration file against the 
 
 ```jsonc
 {
-  "ignoreFiles": [".gitignore"],
-  "ignoreDirs": ["node_modules", ".git"],
-  "commonRules": {
-    "rule_indexfile": {
-      "type": "file",
-      "name": "index.js"
-    }
-  },
-  "rules": [
-    {
-      "type": "file",
-      "name": "package.json"
-    },
-    {
-      "type": "common",
-      "key": "rule_indexfile"
-    },
-    {
-      "type": "directory",
-      "name": "src",
-      "isOptional": true,
-      "rules": [
-        {
-          "type": "common",
-          "key": "rule_indexfile"
+    "ignoreFiles": [".gitignore"],
+    "ignoreDirs": ["node_modules", ".git"],
+    "commonRules": {
+        "rule_indexfile": {
+            "type": "file",
+            "name": "index.js"
         }
-      ]
-    }
-  ]
+    },
+    "rules": [
+        {
+            "type": "file",
+            "name": "package.json"
+        },
+        {
+            "type": "common",
+            "key": "rule_indexfile"
+        },
+        {
+            "type": "directory",
+            "name": "src",
+            "isOptional": true,
+            "rules": [
+                {
+                    "type": "common",
+                    "key": "rule_indexfile"
+                }
+            ]
+        }
+    ]
 }
 ```
 
 In this example:
 
-- We ignore the file `.gitignore` and both `.node_modules` and `.git` directories from being analized
-- We want to have one file name `package.json` and one file named `index.js`
-- We want one directory `src` to have one file named `index.js`. Since it's optional,
-  if the directory does not exist we ignore the rule, but if it does then it must only
-  have one file `index.js`
+-   We ignore the file `.gitignore` and both `.node_modules` and `.git` directories from being analized
+-   We want to have one file name `package.json` and one file named `index.js`
+-   We want one directory `src` to have one file named `index.js`. Since it's optional,
+    if the directory does not exist we ignore the rule, but if it does then it must only
+    have one file `index.js`
 
 ### ignoreFiles:
 
@@ -77,9 +77,9 @@ A string or glob pattern. For example:
 
 ```jsonc
 [
-  "package.json",
-  "**/*.test.js",
-  ".*" // files starting with "."
+    "package.json",
+    "**/*.test.js",
+    ".*" // files starting with "."
 ]
 ```
 
@@ -89,9 +89,9 @@ A string or glob pattern. For example:
 
 ```jsonc
 [
-  "node_modules",
-  "src/**/tests",
-  ".*" // dirs starting with "."
+    "node_modules",
+    "src/**/tests",
+    ".*" // dirs starting with "."
 ]
 ```
 
@@ -101,22 +101,22 @@ Define File, Directory and Common rules that can be reused in `rules`
 
 ```jsonc
 {
-  // key must start with "rule_"
-  // Examples:
-  "rule_indexfile": {
-    "type": "file",
-    "name": "index.js"
-  },
-  "rule_anotherrule": {
-    "type": "directory",
-    "name": "images",
-    "rules": [
-      {
+    // key must start with "rule_"
+    // Examples:
+    "rule_indexfile": {
         "type": "file",
-        "name": "logo.png"
-      }
-    ]
-  }
+        "name": "index.js"
+    },
+    "rule_anotherrule": {
+        "type": "directory",
+        "name": "images",
+        "rules": [
+            {
+                "type": "file",
+                "name": "logo.png"
+            }
+        ]
+    }
 }
 ```
 
@@ -128,36 +128,36 @@ Can contain File, Directory and Common Rules
 
 ```jsonc
 {
-  // Required
-  "type": "file",
+    // Required
+    "type": "file",
 
-  // Required
-  // can be string or RegExp
-  // if RegExp then it has to start and end with /
-  // if string then it can contain one
-  // special case: [camelCase], [UPPERCASE], [dash-case], [snake_case], *
-  // Examples:
-  "name": "package.json",
-  "name": "[snake_case]",
-  "name": "[camelCase].js",
-  "name": ".[UPPERCASE]",
-  "name": ".[dash-case].jpg",
-  "name": "*.png",
-  "name": "/index.(js|ts)/",
+    // Required
+    // can be string or RegExp
+    // if RegExp then it has to start and end with /
+    // if string then it can contain one
+    // special case: [camelCase], [UPPERCASE], [dash-case], [snake_case], *
+    // Examples:
+    "name": "package.json",
+    "name": "[snake_case]",
+    "name": "[camelCase].js",
+    "name": ".[UPPERCASE]",
+    "name": ".[dash-case].jpg",
+    "name": "*.png",
+    "name": "/index.(js|ts)/",
 
-  // Optional
-  // default: null
-  // can be string or RegExp (do not include the dot)
-  // if RegExp then it has to start and end with /
-  // Examples:
-  "extension": "js",
-  "extension": "png",
-  "extension": "/(png|jpg|gif)/",
+    // Optional
+    // default: null
+    // can be string or RegExp (do not include the dot)
+    // if RegExp then it has to start and end with /
+    // Examples:
+    "extension": "js",
+    "extension": "png",
+    "extension": "/(png|jpg|gif)/",
 
-  // Optional
-  // default: false
-  // Whether the file can be included
-  "isOptional": false
+    // Optional
+    // default: false
+    // Whether the file can be included
+    "isOptional": false
 }
 ```
 
@@ -165,30 +165,30 @@ Can contain File, Directory and Common Rules
 
 ```jsonc
 {
-  // Required
-  "type": "directory",
+    // Required
+    "type": "directory",
 
-  // Required
-  // Same options as file names
-  // Examples:
-  "name": "src",
-  "name": "important-[dash-case]",
+    // Required
+    // Same options as file names
+    // Examples:
+    "name": "src",
+    "name": "important-[dash-case]",
 
-  // Optional
-  // default: false
-  // Whether the directory can be included
-  "isOptional": false,
+    // Optional
+    // default: false
+    // Whether the directory can be included
+    "isOptional": false,
 
-  // Optional
-  // default: false
-  // Whether the directory can be recursive
-  // Adds the ability to check directory rules recursively
-  "isRecursive": false,
+    // Optional
+    // default: false
+    // Whether the directory can be recursive
+    // Adds the ability to check directory rules recursively
+    "isRecursive": false,
 
-  // Optional
-  // An array containing file and directory rules
-  // If empty or omitted then we don't validate dir content
-  "rules": []
+    // Optional
+    // An array containing file and directory rules
+    // If empty or omitted then we don't validate dir content
+    "rules": []
 }
 ```
 
@@ -196,26 +196,32 @@ Can contain File, Directory and Common Rules
 
 ```jsonc
 {
-  // Required
-  "type": "common",
+    // Required
+    "type": "common",
 
-  // Required
-  // must match a key property inside "commonRules"
-  // examples:
-  "key": "rule_indexfile",
-  "key": "rule_test2",
-  "key": "rule_whatever",
+    // Required
+    // must match a key property inside "commonRules"
+    // examples:
+    "key": "rule_indexfile",
+    "key": "rule_test2",
+    "key": "rule_whatever",
 
-  // Optional
-  // default: false
-  // Whether the directory can be included
-  "isOptional": false
+    // Optional
+    // default: false
+    // Whether the directory can be included
+    "isOptional": false
 }
 ```
 
 ## Notes
 
-- When you run `$ directory-validator ./` it will look for a `.directoryvalidator.json` file in the current directory, if it doesn't find one, it will try to look for one in the upper directory and so on until the home directory is reached. If no file is found then no rules are applied.
+-   When you run `$ ./node_modules/directory-validator .` it will look for a `.structurerc` file in the current directory, if it doesn't find one, it will try to look for one in the upper directory and so on until the home directory is reached. If no file is found then no rules are applied.
 
-- Rules are inclusive, meaning that if multiple rules match the same files/dirs, they pass.
-  - For example, the rules `{ "name": "index.js", "type": "file" }` and `{ "name": "[camelCase].js", "type": "file" }`, will match a file `index.js` so they both pass.
+-   Rules are inclusive, meaning that if multiple rules match the same files/dirs, they pass.
+    -   For example, the rules `{ "name": "index.js", "type": "file" }` and `{ "name": "[camelCase].js", "type": "file" }`, will match a file `index.js` so they both pass.
+
+## Changes
+
+-   Evaluates all the rules defined in the config within a single run (previously, the tool stops evaluations upon reaching the first error)
+-   Minor improvements to the error messages
+-   Ability to print the ascii tree of the folder structure even when the validation fails
