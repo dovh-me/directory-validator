@@ -145,7 +145,7 @@ function runValidator({
                     console.error(
                         dash,
                         error.path.red.bold,
-                        'is not defined in the config file'
+                        'path does not match any rules defined in the config'
                     );
                 }
             });

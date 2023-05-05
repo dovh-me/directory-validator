@@ -39,7 +39,7 @@ export class ValidatorInvalidPathError extends Error {
     path: string;
 
     constructor(path: string) {
-        super(`${path}, was not validated`);
+        super(`${path}, was not validated due to path being invalid`);
         this.path = path;
     }
 }

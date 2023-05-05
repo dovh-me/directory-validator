@@ -222,6 +222,6 @@ Can contain File, Directory and Common Rules
 
 ## Changes
 
--   Evaluates all the rules defined in the config within a single run (previously, the tool stops evaluations upon reaching the first error)
+-   Evaluates all rules defined in the config within a single run (previously, the tool stops evaluations upon reaching the first error)
 -   Minor improvements to the error messages
 -   Ability to print the ascii tree of the folder structure even when the validation fails
