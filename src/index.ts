@@ -70,7 +70,7 @@ export function runValidator({
         const errorTitle = '\n' + 'Error:'.red.underline;
         if (err instanceof errors.ValidationError) {
             err.errors.forEach((error) => {
-                if (error instanceof errors.ValidatorRuleError) {
+                if (error instanceof errors.FailedRuleError) {
                     console.error(errorTitle);
                     const parentPath = error.paths.join(path.sep);
                     const rule = JSON.stringify(error.rule);
@@ -81,7 +81,7 @@ export function runValidator({
                         'did not passed at:',
                         parentPath.red.bold
                     );
-                } else if (error instanceof errors.ValidatorInvalidPathError) {
+                } else if (error instanceof errors.InvalidPathError) {
                     console.error(errorTitle);
                     console.error(
                         dash,

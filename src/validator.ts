@@ -42,12 +42,12 @@ function getMultimatchName(nameRule: string) {
             return result;
         },
         undefined as
-            | {
-                  type: types.SpecialName;
-                  leftSide: string;
-                  rightSide: string;
-              }
-            | undefined
+        | {
+            type: types.SpecialName;
+            leftSide: string;
+            rightSide: string;
+        }
+        | undefined
     );
 }
 
@@ -142,12 +142,12 @@ function getRuleError(
     rule: types.FileRule | types.DirectoryRule,
     paths: (string | RegExp)[]
 ) {
-    return new errors.ValidatorRuleError(rule, paths);
+    return new errors.FailedRuleError(rule, paths);
 }
 
 function validatePath(element: { path: string; isGood: boolean }) {
     if (!element.isGood) {
-        outErrors.push(new errors.ValidatorInvalidPathError(element.path));
+        outErrors.push(new errors.InvalidPathError(element.path));
         // throw new errors.ValidatorInvalidPathError(element.path);
     }
 }
