@@ -1,31 +1,31 @@
 {
-  "ignoreFiles": [".gitignore"],
-  "ignoreDirs": ["node_modules", ".git"],
-  "commonRules": {
-    "rule_indexfile": {
-      "type": "file",
-      "name": "index.js"
-    }
-  },
-  "rules": [
-    {
-      "type": "file",
-      "name": "package.json"
-    },
-    {
-      "type": "common",
-      "key": "rule_indexfile"
-    },
-    {
-      "type": "directory",
-      "name": "src",
-      "isOptional": true,
-      "rules": [
-        {
-          "type": "common",
-          "key": "rule_indexfile"
+    "ignoreFiles": [".gitignore"],
+    "ignoreDirs": ["node_modules", ".git"],
+    "commonRules": {
+        "rule_indexfile": {
+            "type": "file",
+            "name": "index.js"
         }
-      ]
-    }
-  ]
+    },
+    "rules": [
+        {
+            "type": "file",
+            "name": "package.json"
+        },
+        {
+            "type": "common",
+            "key": "rule_indexfile"
+        },
+        {
+            "type": "directory",
+            "name": "src",
+            "isOptional": true,
+            "rules": [
+                {
+                    "type": "common",
+                    "key": "rule_indexfile"
+                }
+            ]
+        }
+    ]
 }

@@ -1,12 +1,13 @@
 {
     "name": "directory-validator",
     "version": "1.5.4",
-    "description": "CLI Tool to validate directory structures.",
-    "main": "dist/index.js",
+    "description": "A Tool to validate directory structures.",
+    "main": "dist/api/index.js",
     "bin": {
-        "directory-validator": "dist/index.js"
+        "directory-validator": "dist/cli/index.js"
     },
     "scripts": {
+        "prepare": "npm run build",
         "build": "npm run clean && tsc && cp src/resources/* dist/resources",
         "clean": "rm -rf dist",
         "prettier": "prettier -c .",

@@ -1,81 +1,81 @@
 {
-  "definitions": {
-    "fileRule": {
-      "type": "object",
-      "required": ["type", "name"],
-      "properties": {
-        "type": {
-          "enum": ["file"]
-        },
-        "name": { "type": "string" },
-        "extension": { "type": "string" },
-        "isOptional": { "type": "boolean" }
-      },
-      "additionalProperties": false
-    },
-    "directoryRule": {
-      "type": "object",
-      "required": ["type", "name"],
-      "properties": {
-        "type": {
-          "enum": ["directory"]
-        },
-        "name": { "type": "string" },
-        "isOptional": { "type": "boolean" },
-        "isRecursive": { "type": "boolean" },
-        "rules": { "$ref": "#/definitions/rules" }
-      },
-      "additionalProperties": false
-    },
-    "rules": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "oneOf": [
-          { "$ref": "#/definitions/fileRule" },
-          { "$ref": "#/definitions/directoryRule" },
-          {
-            "title": "common",
+    "definitions": {
+        "fileRule": {
             "type": "object",
+            "required": ["type", "name"],
             "properties": {
-              "type": { "enum": ["common"] },
-              "key": { "type": "string", "pattern": "^rule_" },
-              "isOptional": { "type": "boolean" }
+                "type": {
+                    "enum": ["file"]
+                },
+                "name": { "type": "string" },
+                "extension": { "type": "string" },
+                "isOptional": { "type": "boolean" }
             },
-            "required": ["type", "key"],
             "additionalProperties": false
-          }
-        ]
-      }
-    }
-  },
-  "title": "Folder schema validator",
-  "type": "object",
-  "properties": {
-    "ignoreFiles": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": { "type": "string" }
-    },
-    "ignoreDirs": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": { "type": "string" }
-    },
-    "rules": { "$ref": "#/definitions/rules" },
-    "commonRules": {
-      "type": "object",
-      "patternProperties": {
-        "^rule_": {
-          "oneOf": [
-            { "$ref": "#/definitions/fileRule" },
-            { "$ref": "#/definitions/directoryRule" }
-          ]
+        },
+        "directoryRule": {
+            "type": "object",
+            "required": ["type", "name"],
+            "properties": {
+                "type": {
+                    "enum": ["directory"]
+                },
+                "name": { "type": "string" },
+                "isOptional": { "type": "boolean" },
+                "isRecursive": { "type": "boolean" },
+                "rules": { "$ref": "#/definitions/rules" }
+            },
+            "additionalProperties": false
+        },
+        "rules": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "oneOf": [
+                    { "$ref": "#/definitions/fileRule" },
+                    { "$ref": "#/definitions/directoryRule" },
+                    {
+                        "title": "common",
+                        "type": "object",
+                        "properties": {
+                            "type": { "enum": ["common"] },
+                            "key": { "type": "string", "pattern": "^rule_" },
+                            "isOptional": { "type": "boolean" }
+                        },
+                        "required": ["type", "key"],
+                        "additionalProperties": false
+                    }
+                ]
+            }
         }
-      },
-      "additionalProperties": false
-    }
-  },
-  "additionalProperties": false,
-  "required": ["rules"]
+    },
+    "title": "Folder schema validator",
+    "type": "object",
+    "properties": {
+        "ignoreFiles": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string" }
+        },
+        "ignoreDirs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string" }
+        },
+        "rules": { "$ref": "#/definitions/rules" },
+        "commonRules": {
+            "type": "object",
+            "patternProperties": {
+                "^rule_": {
+                    "oneOf": [
+                        { "$ref": "#/definitions/fileRule" },
+                        { "$ref": "#/definitions/directoryRule" }
+                    ]
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": ["rules"]
 }

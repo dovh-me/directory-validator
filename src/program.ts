@@ -10,7 +10,6 @@ import * as _ from 'lodash';
 import * as errors from './errors';
 import schema from './resources/schema.json';
 import * as types from './types';
-import * as validator from './validator';
 
 function getConfig(rulesPath: string): types.Config {
     let configJson: any;
