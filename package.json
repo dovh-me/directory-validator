@@ -7,7 +7,6 @@
         "directory-validator": "dist/cli/index.js"
     },
     "scripts": {
-        "prepare": "npm run build",
         "build": "npm run clean && tsc && cp src/resources/* dist/resources",
         "clean": "rm -rf dist",
         "prettier": "prettier -c .",
