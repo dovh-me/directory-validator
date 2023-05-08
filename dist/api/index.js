@@ -30,6 +30,6 @@ exports.validate = validator.run;
 exports.getProgramData = program.run;
 exports.errors = _errors;
 const initialize = (destinationDir, configFileName) => {
-    fs.copyFileSync(path.join(__dirname, '../resources/defaultConfig.json'), path.join(destinationDir, index_1.initConfigFilename || configFileName));
+    fs.copyFileSync(path.join(__dirname, '../resources/defaultConfig.json'), path.join(destinationDir, configFileName || index_1.initConfigFilename));
 };
 exports.initialize = initialize;
