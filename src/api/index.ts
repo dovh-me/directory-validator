@@ -10,9 +10,9 @@ export const validate = validator.run;
 export const getProgramData = program.run;
 export const errors = _errors;
 
-export const initialize = (destinationDir: string, configFileName: string) => {
+export const initialize = (destinationDir: string, configFileName?: string) => {
     fs.copyFileSync(
         path.join(__dirname, '../resources/defaultConfig.json'),
-        path.join(destinationDir, initConfigFilename || configFileName)
+        path.join(destinationDir, configFileName || initConfigFilename)
     );
 }
