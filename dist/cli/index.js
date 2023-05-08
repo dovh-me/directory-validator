@@ -26,12 +26,11 @@ const os = __importStar(require("os"));
 const path = __importStar(require("path"));
 const index_1 = require("../index");
 const commander_1 = require("commander");
-const initConfigFilename = '.structurerc';
 function getDefaultConfigFilePath(dirPath) {
     let absDirPath = path.resolve(dirPath);
     const homeDirPath = os.homedir();
     while (true) {
-        const configPath = path.join(absDirPath, initConfigFilename);
+        const configPath = path.join(absDirPath, index_1.initConfigFilename);
         if (fs.existsSync(configPath)) {
             return configPath;
         }
@@ -59,8 +58,8 @@ exports.writeDefaultConfigFile = writeDefaultConfigFile;
         .parse(process.argv);
     const selectedOptions = commander_1.program.opts();
     if (selectedOptions.init) {
-        fs.copyFileSync(path.join(__dirname, '../resources/defaultConfig.json'), path.join(process.cwd(), initConfigFilename));
-        console.log('\n\t', initConfigFilename.red, 'created', '\n');
+        fs.copyFileSync(path.join(__dirname, '../resources/defaultConfig.json'), path.join(process.cwd(), index_1.initConfigFilename));
+        console.log('\n\t', index_1.initConfigFilename.red, 'created', '\n');
     }
     else if (!commander_1.program.args.length) {
         commander_1.program.help();

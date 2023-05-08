@@ -23,7 +23,8 @@ exports.run = void 0;
 const _ = __importStar(require("lodash"));
 const path = __importStar(require("path"));
 const errors = __importStar(require("./errors"));
-const outErrors = [];
+// TODO: remove the global variable
+let outErrors = [];
 function getCorrectStringRegexp(name) {
     if (typeof name === 'string') {
         if (name[0] === '/' && name[name.length - 1] === '/' && name.length > 0) {
@@ -241,6 +242,7 @@ function run(files, mainRules, emptyDirs = []) {
             validateRules(rule.rules, [...paths, rule.name]);
         });
     }
+    outErrors = [];
     validateRules(mainRules);
     newFiles.forEach(validatePath);
     newEmptyDirs.forEach(validatePath);

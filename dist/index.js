@@ -19,12 +19,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.runValidator = exports.validate = void 0;
+exports.runValidator = exports.validate = exports.initConfigFilename = void 0;
 require("colors");
 const path = __importStar(require("path"));
 const errors = __importStar(require("./errors"));
 const program = __importStar(require("./program"));
 const validator = __importStar(require("./validator"));
+exports.initConfigFilename = '.structurerc';
 function validate(dirPath, configPath, cliOptions) {
     try {
         const results = program.run(dirPath, configPath, {
