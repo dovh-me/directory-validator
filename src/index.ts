@@ -6,6 +6,8 @@ import * as validator from './validator';
 import { Rules } from './types';
 import commander from 'commander';
 
+export const initConfigFilename = '.structurerc';
+
 export function validate(
     dirPath: string,
     configPath: string,

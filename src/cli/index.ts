@@ -3,10 +3,8 @@
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-import { validate } from '../index';
+import { validate, initConfigFilename } from '../index';
 import { program as commanderProgram } from 'commander';
-
-const initConfigFilename = '.structurerc';
 
 function getDefaultConfigFilePath(dirPath: string) {
     let absDirPath = path.resolve(dirPath);
