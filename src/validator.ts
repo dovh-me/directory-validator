@@ -3,7 +3,8 @@ import * as path from 'path';
 import * as errors from './errors';
 import * as types from './types';
 
-const outErrors: Error[] = [];
+// TODO: remove the global variable
+let outErrors: Error[] = [];
 
 function getCorrectStringRegexp(name: string | RegExp) {
     if (typeof name === 'string') {
@@ -286,6 +287,7 @@ export function run(files: string[], mainRules: types.Rules, emptyDirs: string[]
         });
     }
 
+    outErrors = [];
     validateRules(mainRules);
 
     newFiles.forEach(validatePath);
